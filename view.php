@@ -10,45 +10,34 @@
 <body>
   <div class="post-list">
   <h1>掲示板一覧</h1>
-  <?php if(isset($errs)){
+  <?php if(!empty($errs)){
     foreach($errs as $err){
       echo '<p style="color: red">'.$err.'</p>';
     }
   }?>
 
   <p>新着順</p>
-    <?php if(isset($data)):
+    <?php if(!empty($data)):
     foreach($data as $row): ?>
     <p>投稿タイトル：<?php echo html_escape($row['title']); ?></p>
     <p>投稿者：<?php echo html_escape($row['user']); ?></p>
-    <p>投稿内容：<?php echo html_escape($row['comment']); ?></p>
+    <p>投稿内容：<?php echo nl2br(html_escape($row['comment'])); ?></p>
     <p>投稿時間：<?php echo $row['created']; ?></p>
     <hr>
     <?php endforeach;
           endif; ?>
-
   </div>
 
   <div class="post-form">
     <form action="" method="POST">
-      <div class="form-group">
-        <p><label for="title">投稿タイトル</label></p>
-        <p><input type="text" class="form-control-sm" id="title" name="title"></p>
-      </div>
-      <div class="form-group">
-        <p><label for="user">投稿者</label></p>
-        <p><input type="text" class="form-control-sm" id="user" name="user"></p>
-      </div>
-      <div class="form-group">
-        <p><label for="comment">投稿内容</label></p>
-        <p><textarea class="form-control" id="comment" name="comment" rows="4" cols="40"></textarea></p>
-      </div>
-
+        <p>投稿タイトル</p>
+        <p><input type="text" name="title" class="form-control-sm"></p>
+        <p>投稿者</p>
+        <p><input type="text" name="user" class="form-control-sm"></p>
+        <p>投稿内容</p>
+        <p><textarea name="comment" class="form-control" rows="4" cols="40"></textarea></p>
       <input type="submit" class="btn btn-primary" value="投稿">
     </form>
   </div>
-  
-
-
 </body>
 </html>

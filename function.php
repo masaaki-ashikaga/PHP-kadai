@@ -13,18 +13,6 @@ function get_post($key){
   }
 }
 
-//入力文字数のバリデーション関数
-//　→細かいバリデーションができないので関数はしようせず。
-// function check_words($word, $length){
-//   if(mb_strlen($word) === 0){
-//     return FALSE;
-//   }elseif(mb_strlen($word) > $length){
-//     return FALSE;
-//   }else{
-//     return TRUE;
-//   }
-// }
-
 // DB接続関数
 function get_db_connect(){
   $dsn = 'mysql:dbname=php_kadai;host=localhost;charset=utf8';
@@ -41,16 +29,15 @@ function get_db_connect(){
     die();
   }
   return $dbh;
-
 }
 
 // データ挿入の関数
-function insert_data($dbh, $title, $user, $comment){
-  $date = date('Y-m-d H:i:s');
-$sql = "INSERT INTO keiziban(title, user, comment, created) VALUE(:title, :user, :comment, '{date}')";
+function insert_data($dbh, $user, $title, $comment){  
+$date = date('Y-m-d H:i:s');
+$sql = "INSERT INTO keiziban(user, title, comment, created) VALUE(:user, :title, :comment, '{$date}')";
 $stmt = $dbh->prepare($sql);
-$stmt->bindValue(':title', $title, PDO::PARAM_STR);
 $stmt->bindValue(':user', $user, PDO::PARAM_STR);
+$stmt->bindValue(':title', $title, PDO::PARAM_STR);
 $stmt->bindValue(':comment', $comment, PDO::PARAM_STR);
 if(!$stmt->execute()){
   return 'データの書き込みに失敗しました。';
@@ -59,14 +46,15 @@ if(!$stmt->execute()){
 
 //データの取得関数
 function select_data($dbh){
-  $data = [];
-  $sql = "SELECT title, user, comment, created FROM keiziban";
+  $sql = "SELECT user, title, comment, created FROM keiziban";
   $stmt = $dbh->prepare($sql);
   $stmt->execute();
-  while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $data[] = $row;
+  if(!empty($data)){
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+      $data[] = $row;
+    }
+    return $data;
   }
-  return $data;
 }
 
 ?>
