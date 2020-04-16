@@ -6,14 +6,15 @@ $dbh = get_db_connect();
 $errs = [];
 
 // POSTの取得とバリデーション
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['id'])){
+  
   $title = get_post('title');
   $user = get_post('user');
   $comment = get_post('comment');
   $title_length = mb_strlen($title);
   $user_length = mb_strlen($user);
   $comment_length = mb_strlen($comment);
-  
+
   if($user_length === 0){
     $user = '匿名';
   }
@@ -30,8 +31,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   }
 }
 
-$data = select_data($dbh);
+if(isset($_POST['id'])){
+  $id = get_post('id');
+  delete_data($dbh, $id);
+  $errs[] = '削除完了しました。';
+}
 
+$data = select_data($dbh);
 
 include_once('./view.php');
 

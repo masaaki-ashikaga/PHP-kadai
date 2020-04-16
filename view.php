@@ -24,6 +24,11 @@
     <p>投稿者：<?php echo html_escape($row['user']); ?></p>
     <p>投稿内容：<?php echo nl2br(html_escape($row['comment'])); ?></p>
     <p>投稿時間：<?php echo $row['created']; ?></p>
+    <form action="" method="POST">
+      <input type="hidden" name="eventid" value="delete">
+      <input type="hidden" name="id" value="<?php echo $row['id'] ; ?>">
+      <input type="submit" name="delete" value="削除">
+    </form>
     <hr>
     <?php endforeach;
           endif; ?>

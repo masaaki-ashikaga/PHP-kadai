@@ -46,7 +46,7 @@ if(!$stmt->execute()){
 
 //データの取得関数
 function select_data($dbh){
-  $sql = "SELECT user, title, comment, created FROM keiziban";
+  $sql = "SELECT  id, user, title, comment, created FROM keiziban";
   $stmt = $dbh->prepare($sql);
   $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -54,5 +54,14 @@ function select_data($dbh){
     }
     return $data;
 }
+
+function delete_data($dbh, $id){
+  $sql = "DELETE FROM keiziban WHERE id = :id";
+  $stmt = $dbh->prepare($sql);
+  $params = array(':id' => $id);
+  $stmt->execute($params);
+}
+
+
 
 ?>
