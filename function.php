@@ -49,12 +49,10 @@ function select_data($dbh){
   $sql = "SELECT user, title, comment, created FROM keiziban";
   $stmt = $dbh->prepare($sql);
   $stmt->execute();
-  if(!empty($data)){
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       $data[] = $row;
     }
     return $data;
-  }
 }
 
 ?>

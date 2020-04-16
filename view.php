@@ -18,6 +18,7 @@
 
   <p>新着順</p>
     <?php if(!empty($data)):
+    $data = array_reverse($data);  //新着順に並び替え（配列の要素を逆ならびにする。）
     foreach($data as $row): ?>
     <p>投稿タイトル：<?php echo html_escape($row['title']); ?></p>
     <p>投稿者：<?php echo html_escape($row['user']); ?></p>
