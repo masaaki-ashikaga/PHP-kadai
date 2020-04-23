@@ -1,9 +1,21 @@
 <?php
 require_once('./function.php');
+require_once('./helper/db_helper.php');
+require_once('./login/config.php');
+
+session_start();
+
+if(empty($_SESSION['member'])){
+  header('Location:' .SITE_URL. 'login/login.php');
+}
+
+$member = $_SESSION['member'];
+$members = array();
 
 //データベース接続
 $dbh = get_db_connect();
 $errs = [];
+$members = select_members($dbh);
 
 // POSTの取得とバリデーション
 if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['id'])){

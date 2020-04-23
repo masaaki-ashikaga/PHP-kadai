@@ -9,6 +9,8 @@
 </head>
 <body>
   <div class="post-list">
+  <p>こんにちは<?php echo html_escape($member['name']); ?>さん</p>
+  <p><a href ="./login/logout.php">ログアウト</a></p>
   <h1>掲示板一覧</h1>
   <?php if(!empty($errs)){
     foreach($errs as $err){
