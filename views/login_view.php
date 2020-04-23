@@ -13,7 +13,7 @@
   <form action="../login/login.php" method="POST">
     <p>メールアドレス：<input type="text" name="email"><?php echo $errs['email']; ?></p>
     <p>パスワード：<input type="password" name="password"><?php echo $errs['password']; ?></p>
-    <p><input type="submit" value="登録する"></p>
+    <p><input type="submit" value="ログイン"></p>
     <p><a href="signup.php">新規登録</a></p>
     <p><a href="../read_keiziban.php">簡単ログイン</a></p>
   </form>
