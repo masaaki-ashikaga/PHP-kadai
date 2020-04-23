@@ -54,13 +54,14 @@ function select_data($dbh){
     }
     return $data;
 }
-
+//データ削除関数
 function delete_data($dbh, $id){
   $sql = "DELETE FROM keiziban WHERE id = :id";
   $stmt = $dbh->prepare($sql);
   $params = array(':id' => $id);
   $stmt->execute($params);
 }
+
 
 
 
