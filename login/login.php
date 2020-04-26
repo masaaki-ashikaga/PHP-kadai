@@ -1,6 +1,6 @@
 <?php 
 require_once('config.php');
-require_once('../function.php');
+require_once('../helper/common.php');
 require_once('../helper/db_helper.php');
 
 session_start();
@@ -12,8 +12,8 @@ if(!empty($_SESSION['member'])){
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
-    $email = get_post('email');
-    $password = get_post('password');
+    $email = get_trim_post('email');
+    $password = get_trim_post('password');
 
     $dbh = get_db_connect();
     $errs = array();

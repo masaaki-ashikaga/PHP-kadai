@@ -1,6 +1,6 @@
 <?php
-require_once('./function.php');
 require_once('./helper/db_helper.php');
+require_once('./helper/common.php');
 require_once('./login/config.php');
 
 session_start();
@@ -20,9 +20,9 @@ $members = select_members($dbh);
 // POSTの取得とバリデーション
 if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['id'])){
   
-  $title = get_post('title');
-  $user = get_post('user');
-  $comment = get_post('comment');
+  $title = get_trim_post('title');
+  $user = get_trim_post('user');
+  $comment = get_trim_post('comment');
   $title_length = mb_strlen($title);
   $user_length = mb_strlen($user);
   $comment_length = mb_strlen($comment);
@@ -44,13 +44,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['id'])){
 }
 
 if(isset($_POST['id'])){
-  $id = get_post('id');
+  $id = get_trim_post('id');
   delete_data($dbh, $id);
   $errs[] = '削除完了しました。';
 }
 
 $data = select_data($dbh);
 
-include_once('./view.php');
+include_once('./views/view.php');
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
 require_once('../helper/db_helper.php');
-require_once('../function.php');
+require_once('../helper/common.php');
 
 session_start();
 

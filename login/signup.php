@@ -1,12 +1,12 @@
 <?php 
 require_once('config.php');
-require_once('../function.php');
+require_once('../helper/common.php');
 require_once('../helper/db_helper.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $name = get_post('name');
-    $email = get_post('email');
-    $password = get_post('password');
+    $name = get_trim_post('name');
+    $email = get_trim_post('email');
+    $password = get_trim_post('password');
 
     $dbh = get_db_connect();
     $errs = array();
