@@ -10,6 +10,8 @@ if(empty($_SESSION['member'])){
     exit;
 }
 
+
+
 $member = $_SESSION['member'];
 $dbh = get_db_connect();
 $members = array();

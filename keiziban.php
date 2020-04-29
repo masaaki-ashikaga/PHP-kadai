@@ -51,6 +51,8 @@ if(isset($_POST['id'])){
 
 $data = select_data($dbh);
 
+
 include_once('./views/view.php');
+
 
 ?>

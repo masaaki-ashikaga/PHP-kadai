@@ -67,6 +67,7 @@ function email_exists($dbh, $email){
     }
   }
 
+  
 //INSERT機能関数
 function insert_member_data($dbh, $name, $email, $password){
     $password = password_hash($password, PASSWORD_DEFAULT);

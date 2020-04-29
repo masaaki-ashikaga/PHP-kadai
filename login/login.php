@@ -10,6 +10,7 @@ if(!empty($_SESSION['member'])){
     exit();
 }
 
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $email = get_trim_post('email');
