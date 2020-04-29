@@ -19,12 +19,13 @@ main{
 label{
     color: #8a8a8a;
 }
-.login-form{
+.login-form, .register-form{
     display: flex;
     justify-content: center;
     width : 500px;
 }
-.mail, .pass{
+
+.name, .mail, .pass, .mail_check{
     width: 300px;
     line-height: 3em;
     border: solid #8a8a8a 1px;
@@ -37,22 +38,22 @@ label{
     margin-top: 50px;
     margin-bottom: 70px;
 }
-.login-btn{
+.login-btn, .register-btn{
     width: 150px;
     height: 50px;
     font-size: 17px;
     border: solid #8a8a8a 1px;
     color: #8a8a8a;
 }
-.login-btn:hover{
+.login-btn:hover, .register-btn:hover{
     cursor: pointer;
 }
-.register{
+.register, .login{
     display: flex;
     justify-content: center;
     height: 150px;
 }
-.register-link{
+.register-link, .login-link{
     text-decoration: none;
     color: #8a8a8a;
 }

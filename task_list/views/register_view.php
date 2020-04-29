@@ -6,24 +6,28 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Login Page | タスク管理アプリ</title>
+    <title>Sign up| タスク管理アプリ</title>
 </head>
 
 <body>
     <main>
         <h1 class="page-title">タスク共有アプリ</h1>
-        <p class="form-title">ログインフォーム</p>
-        <div class="login-form">
-            <form action="index.php" method="POST">
+        <p class="form-title">新規登録</p>
+        <div class="register-form">
+            <form action="./register.php" method="POST">
+                <p><label for="mail">Name</label></p>
+                <p><input type="text" name="name" class="name"></p>
                 <p><label for="mail">mail</label></p>
                 <p><input type="text" name="mail" class="mail"></p>
+                <p><label for="mail_check">mail（確認）</label></p>
+                <p><input type="text" name="mail_check" class="mail_check"></p>
                 <p><label for="pass">password</label></p>
                 <p><input type="password" name="pass" class="pass"></p>
-                <p class="btn"><input type="submit" class="login-btn" value="ログイン"></p>
+                <p class="btn"><input type="submit" class="register-btn" value="会員登録"></p>
             </form>
         </div>
-        <div class="register">
-            <a href="/Applications/MAMP/htdocs/php-kadai/task_list/register.php" class="register-link">新規登録はこちら</a>
+        <div class="login">
+            <a href="../index.php" class="login-link">ログインはこちら</a>
         </div>
     </main>
 </body>
