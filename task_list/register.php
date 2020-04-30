@@ -6,7 +6,6 @@ $err = [];
 session_start();
 
 //データベース接続
-$dbh = get_db_connect();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
@@ -15,15 +14,28 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $mail_check = get_trim_post('mail_check');
     $pass = get_trim_post('pass');
     
-    $name_len = mb_strlen($name);
-    $mail_len = mb_strlen($mail);
-    $mail_check_len = mb_strlen($mail_check);
-    $pass_len = mb_strlen($pass);
+    $dbh = get_db_connect();
+    $errs = array();
+
+    if(!check_words($name, 100)){
+        $errs['name'] = 'お名前は必須、100文字以内です。';
+    }
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errs['email'] = 'メールアドレスの形式が正しくないです。';
+    } elseif(email_exists($dbh, $email)){
+        
+    }
+
+    
+    
 
 
 
 if($mail !== $mail_check){
     $err[] =  'メールアドレスが異なります。2つとも同じメールアドレスをご入力下さい。';
+}
+
 }
 
 

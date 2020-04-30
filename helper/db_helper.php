@@ -38,7 +38,7 @@ function get_db_connect(){
     $sql = "SELECT  id, user, title, comment, created FROM keiziban";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
-    //$row = $stmt->fetchAll(PDO::FETCH_ASSIC); でもOK！（１行で書けるからこっちの方が楽）
+    //$row = $stmt->fetchAll(PDO::FETCH_ASSOC); でもOK！（１行で書けるからこっちの方が楽）
       while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         $data[] = $row;
       }

@@ -27,7 +27,7 @@
             </form>
         </div>
         <div class="login">
-            <a href="../index.php" class="login-link">ログインはこちら</a>
+            <a href="./index.php" class="login-link">ログインはこちら</a>
         </div>
     </main>
 </body>
