@@ -16,13 +16,17 @@
         <div class="register-form">
             <form action="./register.php" method="POST">
                 <p><label for="mail">Name</label></p>
-                <p><input type="text" name="name" class="name"></p>
+                    <p style='color: red'><?php if(!empty($errs)){ echo $errs['name']; } ?></p>
+                    <p><input type="text" name="name" class="name"></p>
                 <p><label for="mail">mail</label></p>
-                <p><input type="text" name="mail" class="mail"></p>
+                    <p style='color: red'><?php if(!empty($errs)){ echo $errs['mail']; } ?></p>
+                    <p><input type="text" name="mail" class="mail"></p>
                 <p><label for="mail_check">mail（確認）</label></p>
-                <p><input type="text" name="mail_check" class="mail_check"></p>
+                    <p style='color: red'><?php if(!empty($errs)){ echo $errs['mail_check']; } ?></p>
+                    <p><input type="text" name="mail_check" class="mail_check"></p>
                 <p><label for="pass">password</label></p>
-                <p><input type="password" name="pass" class="pass"></p>
+                    <p style='color: red'><?php if(!empty($errs)){ echo $errs['pass']; } ?></p>
+                    <p><input type="password" name="pass" class="pass"></p>
                 <p class="btn"><input type="submit" class="register-btn" value="会員登録"></p>
             </form>
         </div>
